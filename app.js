@@ -13,6 +13,9 @@ const port = process.env.PORT || 3000;
 // Router dei posts
 const postsRouter = require("./routers/posts.js");
 
+// Router degli users
+const authRouter = require("./routers/auth.js");
+
 // Middleware globale degli errori
 const globalErrors = require("./middlewares/globalErrors.js");
 
@@ -21,6 +24,9 @@ app.use(express.static('public'));
 
 // Indico ad express che esistono nuove rotte
 app.use('/posts', postsRouter);
+
+// Indico ad express che esistono nuove rotte login
+app.use('/login', authRouter);
 
 // Rotta base
 app.get('/', (req, res) => {
