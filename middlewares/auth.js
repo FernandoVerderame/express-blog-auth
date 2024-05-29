@@ -13,8 +13,7 @@ const authenticate = (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) {
-            err.message === 'invalid signature' && res.status(401).send('Non sei autorizzato');
-            err.message === 'jwt expired' && res.status(403).send('Sessione scaduta');
+            return res.status(403).send(err);
         }
 
         req.user = user;

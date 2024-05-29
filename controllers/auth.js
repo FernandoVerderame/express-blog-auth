@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const users = require('../db/users.json');
 
-const generateToken = user => jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "1m" });
+const generateToken = user => jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "1h" });
 
 const login = (req, res) => {
     const { username, password } = req.body;
