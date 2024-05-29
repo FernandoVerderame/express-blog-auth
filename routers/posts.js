@@ -13,6 +13,9 @@ router.use(express.urlencoded({ extended: true }));
 // Middleware della delete
 const deleteErrors = require("../middlewares/deleteErrors.js");
 
+//
+const authenticate = require("../middlewares/auth.js");
+
 // Importo multer 
 const multer = require("multer");
 
@@ -23,7 +26,7 @@ const uploader = multer({ dest: "public" });
 router.get("/", postsControllers.index);
 
 // Rotta store
-router.post("/", uploader.single("image"), postsControllers.store);
+router.post("/", authenticate, uploader.single("image"), postsControllers.store);
 
 // Creazione di un Post
 router.get("/create", postsControllers.create);
