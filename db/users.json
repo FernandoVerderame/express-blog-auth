@@ -3,13 +3,13 @@
         "id": 1,
         "username": "mario.rossi",
         "password": "password",
-        "admin": false
+        "admin": true
     },
     {
         "id": 2,
         "username": "giuseppe.verdi",
         "password": "password",
-        "admin": true
+        "admin": false
     },
     {
         "id": 3,

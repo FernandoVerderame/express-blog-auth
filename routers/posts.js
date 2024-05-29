@@ -14,7 +14,7 @@ router.use(express.urlencoded({ extended: true }));
 const deleteErrors = require("../middlewares/deleteErrors.js");
 
 //
-const authenticate = require("../middlewares/auth.js");
+const auth = require("../middlewares/auth.js");
 
 // Importo multer 
 const multer = require("multer");
@@ -26,7 +26,7 @@ const uploader = multer({ dest: "public" });
 router.get("/", postsControllers.index);
 
 // Rotta store
-router.post("/", authenticate, uploader.single("image"), postsControllers.store);
+router.post("/", auth.authenticate, uploader.single("image"), postsControllers.store);
 
 // Creazione di un Post
 router.get("/create", postsControllers.create);
@@ -35,7 +35,7 @@ router.get("/create", postsControllers.create);
 router.get("/:slug", postsControllers.show);
 
 // Cancellazione di un Post
-router.delete("/:slug", deleteErrors, postsControllers.destroy);
+router.delete("/:slug", auth.authenticate, auth.authenticateAdmin, deleteErrors, postsControllers.destroy);
 
 // Rotta per il download delle immagini
 router.get("/:slug/download", postsControllers.file('download'));
