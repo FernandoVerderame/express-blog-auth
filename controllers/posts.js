@@ -23,7 +23,7 @@ const index = (req, res) => {
                         <h3>${title}</h3>
                         <img width="300" height="200" src="/${image}" alt="${title}"/>
                         <p>${content}</p>
-                        <p>${tags.map(t => `<strong><span class="tag">#${t}<span></strong>`).join(' ')}</p>
+                        <p>${tags.map(t => `<strong><span class="tag">#${t.replaceAll(' ', '-').toLowerCase()}<span></strong>`).join(' ')}</p>
                         <a href="http://${req.headers.host}/posts/${slug}">Visualizza immagine</a>
                     </div>
                 </li>
@@ -63,7 +63,7 @@ const show = (req, res) => {
                         <h3>${p.title}</h3>
                         <img width="300" height="200" src="/${p.image}" alt="${p.title}"/>
                         <p>${p.content}</p>
-                        <p>${p.tags.map(t => `<strong><span class="tag">#${t}<span></strong>`).join(' ')}</p>
+                        <p>${p.tags.map(t => `<strong><span class="tag">#${t.replaceAll(' ', '-').toLowerCase()}<span></strong>`).join(' ')}</p>
                         <a href="http://${req.headers.host}/${requestPost.image}">Visualizza immagine</a>
                         <a href="http://${req.headers.host}/posts/${requestPost.slug}/download">Download immagine</a>
                         <a href="http://${req.headers.host}/posts">Torna indietro</a>
