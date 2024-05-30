@@ -10,7 +10,7 @@ const authController = require("../controllers/auth.js");
 // Middleware per analizzare i dati codificati in URL
 router.use(express.urlencoded({ extended: true }));
 
-// 
+// Rotta della Login
 router.post("/", authController.login)
 
 module.exports = router;

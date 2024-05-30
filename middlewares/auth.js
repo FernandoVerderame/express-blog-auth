@@ -1,9 +1,13 @@
+// Importo il file .env
 require("dotenv").config();
 
+// Importo gli users
 const users = require("../db/users.json");
 
+// Importo JWT
 const jwt = require("jsonwebtoken");
 
+// Autenticazione generale
 const authenticate = (req, res, next) => {
     const { authorization } = req.headers;
 
@@ -23,6 +27,7 @@ const authenticate = (req, res, next) => {
     });
 }
 
+// Autenticazione admin
 const authenticateAdmin = (req, res, next) => {
     const { username, password } = req.user;
     const user = users.find(u => u.username === username && u.password === password);

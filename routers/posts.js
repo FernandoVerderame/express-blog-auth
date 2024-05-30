@@ -13,7 +13,7 @@ router.use(express.urlencoded({ extended: true }));
 // Middleware della delete
 const deleteErrors = require("../middlewares/deleteErrors.js");
 
-//
+// Importo l'autenticazione
 const auth = require("../middlewares/auth.js");
 
 // Importo multer 
